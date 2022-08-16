@@ -1,0 +1,278 @@
+<body>
+    
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand fw-bold" href="#">User Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item me-5 mb-2">
+                    <input type="search" class="form-control-sm rounded mt-3 mx-auto" placeholder="Search here" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
+                </li>
+                <li class="nav-item me-3">
+                    <button class="btn btn-button nav-btn" (click)="displayDtl()">Details</button>
+                </li>
+                <li class="nav-item me-3">
+                    <button class="btn btn-button nav-btn" (click)="ApprovalTask()">Approval_status</button>
+                </li>
+                <li class="nav-item me-3">
+                  <button class="btn btn-button nav-btn" (click)="RejectTask()">Rejected_status</button>
+                </li>
+               
+              </ul>
+            </div>
+          </nav>
+
+
+          <div class="add-btn">
+            <button class="btn btn-dark" (click)="displayForm()">Add Task</button>
+          </div>
+<!-- --------------------------------------------------------------------------------navbar close------------------------------------ -->
+
+          <section *ngIf="dtltable">
+
+            <div class="container">
+  
+                <div class="card cd-card">
+          
+                    <h2 class=" text-info text-center fw-bold">TASK-DETAILS</h2>
+                    <p class="text-center">task details here!....</p>
+          
+                   <div class="row">
+        
+                    <div class="col-12 bg-info mb-5 ">
+                        <h2 class="text-dark">Task Details</h2>
+                    </div>
+                    <div class="col-12 bg-secondary mt-4" *ngFor="let l of viewList| filter:searchText">
+                        <label class="text-light mt-3"><b>Task_name</b>       :  {{l?.task_name}}</label><br>
+                        <label class="text-light"><b>Task_id</b>         :  {{l?.task_id}}</label><br>
+                        <label class="text-light"> <b>Task_status</b>     :  {{l?.task_status}}</label><br>
+                        <label class="text-light"><b>Start_time </b>      :  {{l?.start_time}}</label><br>
+                        <label class="text-light"> <b>End_time</b>        :  {{l?.end_time}}</label><br>
+                        <label class="text-light"> <b>Created_date</b>    :  {{l?.created_date}}</label><br>
+                        <label class="text-light"> <b>Approval_status</b>  :  {{l?.approval_status}}</label><br>
+                        <label class="text-light"> <b>Assigned_manager</b> :  {{l?.assigned_manager}}</label><br>
+                        <label class="text-light"><b>Task_description </b>:  {{l?.task_description}}</label><br>
+                        <label class="mt-3 mb-3"> <button class="btn btn-warning me-3" (click)="editGetvalue(l)" >Edit</button>&nbsp;&nbsp; &nbsp;&nbsp; 
+                        <button class="btn btn-danger" (click)="deleteTask(l)">Remove</button></label><br>
+        
+                    </div>
+                    
+        
+                   </div>
+          
+          
+          
+                </div>
+          
+          
+          
+          
+          
+            </div>
+
+
+
+
+          </section>
+
+
+  <!-- ----------------------------------------------------------------------------detail close ---------------------------------------------------- -->
+
+
+
+  <div class="container" [hidden]="isShow">
+
+    <div class="card cd-card">
+
+        <h2 class=" text-info text-center fw-bold">ADD-TASK</h2>
+        <p class="text-center">Add your task here!....</p>
+
+        <section>
+          <div class="form">
+            <form [formGroup]="formValue">
+          
+                <div class="mb-3">
+                    <label for="task_name" class="form-label">Task_name</label>
+                    <input type="text" class="form-control" id="name" formControlName="task_name">
+                    <small  class="text-danger" *ngIf=" val_task_name && val_task_name.invalid && val_task_name.touched ">please enter valid task_name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task_id" class="form-label">Task_id</label>
+                    <input type="number" class="form-control" id="task_id" formControlName="task_id">
+                    <small  class="text-danger" *ngIf="val_task_id && val_task_id.invalid && val_task_id.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task_status" class="form-label">Task_status</label>
+                    <input type="text" class="form-control" id="task_status" formControlName="task_status">
+                    <small  class="text-danger" *ngIf="val_task_status && val_task_status .invalid && val_task_status .touched">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="start_time" class="form-label">Start_time</label>
+                    <input type="time" class="form-control" id="start_time" formControlName="start_time">
+                    <small  class="text-danger" *ngIf="val_start_time && val_start_time.invalid && val_start_time.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="end_time" class="form-label">End_time</label>
+                    <input type="time" class="form-control" id="end_time" formControlName="end_time">
+                    <small  class="text-danger" *ngIf="val_end_time && val_end_time.invalid && val_end_time.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="created_date" class="form-label">Created_date</label>
+                    <input type="date" class="form-control" id="created_date" formControlName="created_date">
+                    <small  class="text-danger" *ngIf="val_created_date && val_created_date.invalid && val_created_date.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="approval_status" class="form-label">Approval_status</label>
+                    <input type="text" class="form-control" id="approval_status" formControlName="approval_status">
+                      <div class="mt-3">
+                        <label class="text-success fw-bold">Approved</label><br>
+                        <label class="text-danger fw-bold">Rejected</label>
+
+                      </div>
+                    <small  class="text-danger" *ngIf="val_approval_status && val_approval_status.invalid && val_approval_status.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="assigned_manager" class="form-label">Assigned_manager</label>
+                    <input type="text" class="form-control" id="assigned_manager" formControlName="assigned_manager">
+                    <small  class="text-danger" *ngIf="val_assigned_manager && val_assigned_manager.invalid && val_assigned_manager.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="task_description" class="form-label">Task_description</label>
+                    <input type="text" class="form-control" id="task_description" formControlName="task_description">
+                    <small  class="text-danger" *ngIf="val_task_description && val_task_description.invalid && val_task_description.touched ">please enter valid name</small>
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" *ngIf="btnSaveshow" class="btn btn-primary" (click)="add()" >Submit</button>
+                    <input type="button" *ngIf="btnUpdateshow" class="btn btn-warning " (click)="updateTask()" value="update">
+                    <input type="button" class="btn btn-danger ms-5" (click)="clearForm()" value="clear">
+                  </div>
+               
+                
+            </form>
+
+
+
+
+          </div>
+
+
+        </section>
+
+
+
+    </div>
+
+
+
+
+
+</div>
+
+<!-- --------------------------------------------approval status------------------------------------------------------------------- -->
+<section *ngIf="apptable">
+
+  <div class="container">
+
+      <div class="card cd-card">
+
+          <h2 class=" text-info text-center fw-bold">APPROVAL-TASK-DETAILS</h2>
+          <p class="text-center">task details here!....</p>
+
+         <div class="row">
+
+          <div class="col-12 bg-info mb-5 ">
+              <h2 class="text-dark">Task Details</h2>
+          </div>
+          <div class="col-12 bg-secondary mt-4" *ngFor="let l of viewList| filter:searchText">
+            <div *ngIf="l.approval_status == 'Approved'">
+                <label class="text-light mt-3"><b>Task_name</b>       :  {{l?.task_name}}</label><br>
+                <label class="text-light"><b>Task_id</b>         :  {{l?.task_id}}</label><br>
+                <label class="text-light"> <b>Task_status</b>     :  {{l?.task_status}}</label><br>
+                <label class="text-light"><b>Start_time </b>      :  {{l?.start_time}}</label><br>
+                <label class="text-light"> <b>End_time</b>        :  {{l?.end_time}}</label><br>
+                <label class="text-light"> <b>Created_date</b>    :  {{l?.created_date}}</label><br>
+                <label class="text-light"> <b>Approval_status</b>  :  {{l?.approval_status}}</label><br>
+                <label class="text-light"> <b>Assigned_manager</b> :  {{l?.assigned_manager}}</label><br>
+                <label class="text-light"><b>Task_description </b>:  {{l?.task_description}}</label><br>
+                <label class="mt-3 mb-3"> <button class="btn btn-warning me-3" (click)="editGetvalue(l)" >Edit</button>&nbsp;&nbsp; &nbsp;&nbsp; 
+                <button class="btn btn-danger" (click)="deleteTask(l)">Remove</button></label><br>
+              </div>
+          </div>
+          
+
+         </div>
+
+
+
+      </div>
+
+
+
+
+
+  </div>
+
+
+
+
+</section>
+
+<!-- -----------------------------------------------------------reject status------------------------------------------------------------------- -->
+
+<section *ngIf="rjcttable">
+
+  <div class="container">
+
+      <div class="card cd-card">
+
+          <h2 class=" text-info text-center fw-bold">REJECTED-TASK-DETAILS</h2>
+          <p class="text-center">task details here!....</p>
+
+         <div class="row">
+
+          <div class="col-12 bg-info mb-5 ">
+              <h2 class="text-dark">Task Details</h2>
+          </div>
+          <div class="col-12 bg-secondary mt-4" *ngFor="let l of viewList| filter:searchText">
+            <div *ngIf="l.approval_status == 'Rejected'">
+                <label class="text-light mt-3"><b>Task_name</b>       :  {{l?.task_name}}</label><br>
+                <label class="text-light"><b>Task_id</b>         :  {{l?.task_id}}</label><br>
+                <label class="text-light"> <b>Task_status</b>     :  {{l?.task_status}}</label><br>
+                <label class="text-light"><b>Start_time </b>      :  {{l?.start_time}}</label><br>
+                <label class="text-light"> <b>End_time</b>        :  {{l?.end_time}}</label><br>
+                <label class="text-light"> <b>Created_date</b>    :  {{l?.created_date}}</label><br>
+                <label class="text-light"> <b>Approval_status</b>  :  {{l?.approval_status}}</label><br>
+                <label class="text-light"> <b>Assigned_manager</b> :  {{l?.assigned_manager}}</label><br>
+                <label class="text-light"><b>Task_description </b>:  {{l?.task_description}}</label><br>
+                <label class="mt-3 mb-3"> <button class="btn btn-warning me-3" (click)="editGetvalue(l)" >Edit</button>&nbsp;&nbsp; &nbsp;&nbsp; 
+                <button class="btn btn-danger" (click)="deleteTask(l)">Remove</button></label><br>
+              </div>
+          </div>
+          
+
+         </div>
+
+
+
+      </div>
+
+
+
+
+
+  </div>
+
+
+
+
+</section>
+
+</div>
+
+
+
+</body>
+

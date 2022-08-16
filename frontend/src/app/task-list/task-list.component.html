@@ -1,0 +1,78 @@
+
+<body>
+
+    <div class="container">
+
+        <div class="input-group">
+            <input type="search" class="form-control-sm rounded mt-5 float-end" placeholder="Search" [(ngModel)]="searchText" aria-label="Search" aria-describedby="search-addon" />
+        </div>
+  
+        <div class="card cd-card">
+  
+            <h2 class=" text-info text-center fw-bold">ADD-TASK</h2>
+            <p class="text-center">Add your task here!....</p>
+  
+           <div class="row">
+
+            <div class="col-12 bg-info mb-5">
+                <h2 class="text-dark">List</h2>
+            </div>
+            <div class="col-12 bg-secondary mt-2" *ngFor="let l of viewList | filter:searchText">
+                <h4 class="text-light">{{l?.task_name}}</h4>
+            </div>
+
+            
+
+            
+            
+
+            
+
+           </div>
+  
+  
+  
+        </div>
+  
+  
+  
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

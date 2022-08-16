@@ -1,0 +1,102 @@
+
+
+<body>
+
+    <div class="container">
+  
+        <div class="card cd-card">
+  
+            <h2 class=" text-info text-center fw-bold">ADD_USER</h2>
+            <p class="text-center">user add here!....</p>
+  
+           <div class="row">
+
+                <div class="col-12 bg-info mb-5 ">
+                    <h2 class="text-dark">Add User</h2>
+                </div>
+
+                <div class="form">
+                    <form (ngSubmit)="onRegister()">
+                        <div class="form-group">
+                          <label for="full_name">Full name</label>
+                          <input type="text" class="form-control" name="full_name" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.full_name" placeholder="Full_name">
+                          
+                        </div>
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" name="username" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control" name="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_id">User_id</label>
+                            <input type="text" class="form-control" name="user_id" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.user_id" placeholder="User_id">
+                        </div>
+                        <div class="form-group">
+                            <label for="is_superuser">Is_superuser</label>
+                            <input type="text" class="form-control" name="is_superuser" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.is_superuser" placeholder="Is_superuser">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" class="form-control" name="department"  [ngModelOptions]="{standalone: true}" [(ngModel)]="register.department" placeholder="Department">
+                        </div>
+                          <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" class="form-control" id="designation" [ngModelOptions]="{standalone: true}" [(ngModel)]="register.designation" placeholder="Designation">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                      </form>
+
+                </div>
+           
+
+           </div>
+  
+        </div>
+  
+  
+  
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+

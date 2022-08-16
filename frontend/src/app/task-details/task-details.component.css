@@ -1,0 +1,17 @@
+
+.cd-card {
+    margin-top: 113px;
+    padding: 51px;
+    margin-left: 60px;
+    margin-right: 60px;
+    color: white;
+ 
+background: #9358C7;
+background: -webkit-linear-gradient(right, #9358C7, #74409F);
+background: -moz-linear-gradient(right, #9358C7, #74409F);
+background: linear-gradient(to left, #9358C7, #74409F);
+}
+
+.control {
+    background-color: #eaeaea;
+}

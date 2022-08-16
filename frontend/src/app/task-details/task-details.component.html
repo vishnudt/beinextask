@@ -1,0 +1,79 @@
+
+<body>
+
+    <div class="container">
+  
+        <div class="card cd-card">
+  
+            <h2 class=" text-info text-center fw-bold">TASK-DETAILS</h2>
+            <p class="text-center">task details here!....</p>
+  
+           <div class="row">
+
+            <div class="col-12 bg-info mb-5 ">
+                <h2 class="text-dark">Task Details</h2>
+            </div>
+            <div class="col-12 bg-secondary mt-4" *ngFor="let l of viewList">
+                <label class="text-light mt-3"><b>Task_name</b>       :  {{l?.task_name}}</label><br>
+                <label class="text-light"><b>Task_id</b>         :  {{l?.task_id}}</label><br>
+                <label class="text-light"> <b>Task_status</b>     :  {{l?.task_status}}</label><br>
+                <label class="text-light"><b>Start_time </b>      :  {{l?.start_time}}</label><br>
+                <label class="text-light"> <b>End_time</b>        :  {{l?.end_time}}</label><br>
+                <label class="text-light"> <b>Created_date</b>    :  {{l?.created_date}}</label><br>
+                <label class="text-light"> <b>Approval_status</b>  :  {{l?.approval_status}}</label><br>
+                <label class="text-light"> <b>Assigned_manager</b> :  {{l?.assigned_manager}}</label><br>
+                <label class="text-light"><b>Task_description </b>:  {{l?.task_description}}</label><br>
+                <label class="mt-3 mb-3"> <button class="btn btn-warning me-3" >Edit</button>&nbsp;&nbsp; &nbsp;&nbsp; <button class="btn btn-danger" >Remove</button></label><br>
+
+            </div>
+            
+
+           </div>
+  
+  
+  
+        </div>
+  
+  
+  
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
